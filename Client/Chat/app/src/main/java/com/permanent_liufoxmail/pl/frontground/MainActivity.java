@@ -2,12 +2,15 @@ package com.permanent_liufoxmail.pl.frontground;
 
 
 import android.app.Notification;
+import android.app.NotificationManager;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.NotificationCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -47,7 +50,8 @@ public class MainActivity extends AppCompatActivity
         list = new ArrayList<>();
         recyclerAdapter = new RecyclerAdapter(this);
         final Handler handler = new MyHandler();//接收消息，更改UI
-        Notification.Builder builder = new Notification.Builder(MainActivity.this);
+
+
 
         showDialog();
 
@@ -142,6 +146,7 @@ public class MainActivity extends AppCompatActivity
                     com.permanent_liufoxmail.pl.background.Message content =
                             new com.permanent_liufoxmail.pl.background.Message(split[1], 2, split[2], ("来自：" + split[0]));
                     list.add(content);
+                    setNotifition(split[0], split[1]);
                 }
 
                 // 向适配器set数据
@@ -175,5 +180,20 @@ public class MainActivity extends AppCompatActivity
         dialog.setView(editText);
         dialog.setPositiveButton("确定", (DialogInterface.OnClickListener) sure);
         dialog.show();
+    }
+
+    private void setNotifition(String name, String text)
+    {
+        NotificationCompat.Builder builder = (NotificationCompat.Builder) new NotificationCompat.Builder(this)
+                .setSmallIcon(R.mipmap.ic_launcher)
+                .setContentTitle(name)
+                .setContentText(text);
+
+        Notification notification = builder.build();
+        notification.flags = Notification.FLAG_ONLY_ALERT_ONCE;
+        notification.defaults = Notification.DEFAULT_ALL;
+
+        NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        notificationManager.notify(1, notification);
     }
 }

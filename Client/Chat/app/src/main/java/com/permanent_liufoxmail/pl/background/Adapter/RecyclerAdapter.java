@@ -1,7 +1,6 @@
 package com.permanent_liufoxmail.pl.background.Adapter;
 
 import android.content.Context;
-import android.support.v4.view.LayoutInflaterFactory;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,6 +24,16 @@ public class RecyclerAdapter extends RecyclerView.Adapter
 
     private static final int RIGHT_MESSAGE = 1;
     private static final int LEFT_MESSAGE = 2;
+
+//    NotificationCompat.Builder builder = new NotificationCompat.Builder(context);
+//
+//    private void setNorification(String name, String text)
+//    {
+//        builder.setSmallIcon(R.mipmap.ic_launcher);
+//        builder.setContentTitle("Chat");
+//        builder.setContentText(text);
+//    }
+
 
     public RecyclerAdapter(Context context)
     {
