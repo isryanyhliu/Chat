@@ -8,9 +8,9 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.app.NotificationCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity
             {
                 try
                 {
-                    socket = new Socket("192.168.43.199", 10010);
+                    socket = new Socket("192.168.31.44", 10010);
                     InputStream inputStream = socket.getInputStream();
 
 //                    BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream(), "GB2312"));
